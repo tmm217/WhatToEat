@@ -1,0 +1,102 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all dishagrees
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new dishagree
+    </h2>
+
+    <form action="/insert_dishagree" method="post">
+      <div class="form-group">
+        <label for="da_id_box">
+          Da
+        </label>
+
+        <input type="text" id="da_id_box" name="query_da_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="dfood_id_box">
+          Dfood
+        </label>
+
+        <input type="text" id="dfood_id_box" name="query_dfood_id" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create dishagree
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Da
+        </th>
+
+        <th>
+          Dfood
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @dishagrees.each do |dishagree| %>
+      <tr>
+        <td>
+          <%= dishagree.id %>
+        </td>
+
+        <td>
+          <%= dishagree.da_id %>
+        </td>
+
+        <td>
+          <%= dishagree.dfood_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(dishagree.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(dishagree.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/dishagrees/<%= dishagree.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

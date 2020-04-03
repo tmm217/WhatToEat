@@ -1,0 +1,118 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all dishes
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new dish
+    </h2>
+
+    <form action="/insert_dish" method="post">
+      <div class="form-group">
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="cuisine_id_box">
+          Cuisine
+        </label>
+
+        <input type="text" id="cuisine_id_box" name="query_cuisine_id" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create dish
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Cuisine
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @dishes.each do |dish| %>
+      <tr>
+        <td>
+          <%= dish.id %>
+        </td>
+
+        <td>
+          <%= dish.name %>
+        </td>
+
+        <td>
+          <%= dish.description %>
+        </td>
+
+        <td>
+          <%= dish.cuisine_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(dish.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(dish.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/dishes/<%= dish.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

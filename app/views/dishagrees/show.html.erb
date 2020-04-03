@@ -1,0 +1,86 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Dishagree #<%= @dishagree.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/dishagrees" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_dishagree/<%= @dishagree.id %>" class="btn btn-block btn-outline-secondary">
+          Delete dishagree
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Da
+      </dt>
+      <dd>
+        <%= @dishagree.da_id %>
+      </dd>
+
+      <dt>
+        Dfood
+      </dt>
+      <dd>
+        <%= @dishagree.dfood_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@dishagree.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@dishagree.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit dishagree
+    </h2>
+
+    <form action="/modify_dishagree/<%= @dishagree.id %>"  method="post" >
+      <div class="form-group">
+        <label for="da_id_box">
+          Da
+        </label>
+
+        <input type="text" id="da_id_box" name="query_da_id" class="form-control" value="<%= @dishagree.da_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="dfood_id_box">
+          Dfood
+        </label>
+
+        <input type="text" id="dfood_id_box" name="query_dfood_id" class="form-control" value="<%= @dishagree.dfood_id %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update dishagree
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

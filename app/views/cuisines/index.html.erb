@@ -1,0 +1,102 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all cuisines
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new cuisine
+    </h2>
+
+    <form action="/insert_cuisine" method="post">
+      <div class="form-group">
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create cuisine
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Title
+        </th>
+
+        <th>
+          Image
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @cuisines.each do |cuisine| %>
+      <tr>
+        <td>
+          <%= cuisine.id %>
+        </td>
+
+        <td>
+          <%= cuisine.title %>
+        </td>
+
+        <td>
+          <%= cuisine.image %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(cuisine.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(cuisine.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/cuisines/<%= cuisine.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

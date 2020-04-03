@@ -1,0 +1,86 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Cuisine #<%= @cuisine.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/cuisines" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_cuisine/<%= @cuisine.id %>" class="btn btn-block btn-outline-secondary">
+          Delete cuisine
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @cuisine.title %>
+      </dd>
+
+      <dt>
+        Image
+      </dt>
+      <dd>
+        <%= @cuisine.image %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@cuisine.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@cuisine.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit cuisine
+    </h2>
+
+    <form action="/modify_cuisine/<%= @cuisine.id %>"  method="post" >
+      <div class="form-group">
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" class="form-control" value="<%= @cuisine.title %>">
+      </div>
+
+      <div class="form-group">
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image" class="form-control" value="<%= @cuisine.image %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update cuisine
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

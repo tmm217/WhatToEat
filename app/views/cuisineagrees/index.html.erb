@@ -1,0 +1,102 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all cuisineagrees
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new cuisineagree
+    </h2>
+
+    <form action="/insert_cuisineagree" method="post">
+      <div class="form-group">
+        <label for="ca_id_box">
+          Ca
+        </label>
+
+        <input type="text" id="ca_id_box" name="query_ca_id" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="cfood_id_box">
+          Cfood
+        </label>
+
+        <input type="text" id="cfood_id_box" name="query_cfood_id" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create cuisineagree
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Ca
+        </th>
+
+        <th>
+          Cfood
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @cuisineagrees.each do |cuisineagree| %>
+      <tr>
+        <td>
+          <%= cuisineagree.id %>
+        </td>
+
+        <td>
+          <%= cuisineagree.ca_id %>
+        </td>
+
+        <td>
+          <%= cuisineagree.cfood_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(cuisineagree.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(cuisineagree.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/cuisineagrees/<%= cuisineagree.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
